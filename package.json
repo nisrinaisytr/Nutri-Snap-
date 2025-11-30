@@ -2,7 +2,7 @@
   "name": "nutri-snap",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://nutrisnap.github.io/prototype",  
+  "homepage": "https://nisrinaisytr.github.io/Nutri-Snap-",  
   "type": "module",
   "scripts": {
     "dev": "vite",
