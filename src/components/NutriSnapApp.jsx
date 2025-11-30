@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Camera, Home, FileText, BookOpen, Gift, User, Wifi, WifiOff, Award, Target, AlertTriangle, MessageCircle, Play, Send, TrendingUp, Zap, Star, Medal, CheckCircle2, ShoppingBag, Pill, Heart, Baby, Calendar, Phone, MapPin } from 'lucide-react';
+import logoImage from '../assets/logo.png';
 
 const NutriSnapApp = () => {
   const [currentScreen, setCurrentScreen] = useState('login');
@@ -57,6 +58,14 @@ const NutriSnapApp = () => {
         alert('Tanggal lahir tidak boleh kosong!');
         return;
       }
+      if (phoneInput.trim() === '') {
+        alert('Nomor telepon tidak boleh kosong!');
+        return;
+      }
+      if (addressInput.trim() === '') {
+        alert('Alamat tidak boleh kosong!');
+        return;
+      }
 
       const trimmedName = loginInput.trim();
       const calculatedAge = calculateAge(dateInput); // Hitung umur
@@ -101,8 +110,12 @@ const NutriSnapApp = () => {
       <div className="h-full flex flex-col bg-gradient-to-br from-blue-600 to-blue-700">
         <div className="flex-1 flex flex-col items-center justify-center p-6">
           {/* Logo/Icon */}
-          <div className="bg-white w-32 h-32 rounded-full flex items-center justify-center mb-6 shadow-2xl">
-            <Award className="w-20 h-20 text-blue-600" />
+          <div className="bg-white w-32 h-32 rounded-full flex items-center justify-center mb-6 shadow-2xl overflow-hidden">
+            <img 
+              src={logoImage} 
+              alt="Logo NutriSnap" 
+              className="w-full h-full object-contain scale-110" 
+            />
           </div>
 
           {/* App Name */}
@@ -115,10 +128,10 @@ const NutriSnapApp = () => {
           <div className="w-full max-w-sm bg-white rounded-3xl shadow-2xl flex flex-col max-h-[50vh]">
             <div className="p-6 pb-2 text-center flex-shrink-0">
               <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">Selamat Datang!</h2>
-              <p className="text-gray-600 text-center mb-6">Lengkapi data Anda untuk masuk</p>
+              <p className="text-gray-600 text-center mb-5">Lengkapi data Anda untuk masuk</p>
             </div>
 
-              <div className="overflow-y-auto px-6 pb-6 pt-2 space-y-3 custom-scrollbar"> 
+              <div className="overflow-y-auto px-6 pb-6 pt-2 space-y-3 custom-scrollbar no-scrollbar"> 
                 {/* Input Nama */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
@@ -207,7 +220,7 @@ const NutriSnapApp = () => {
             <WifiOff className="w-12 h-12 text-red-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Anda Sedang Offline</h2>
-          <p className="text-gray-600 text-base mb-6">Fitur chat memerlukan koneksi internet. Silakan aktifkan koneksi Anda terlebih dahulu.</p>
+          <p className="text-gray-600 text-base mb-6">Fitur chat memerlukan koneksi internet. Silakan aktifkan koneksi Anda terlebih dahulu atau ganti ke mode online.</p>
           
           <button 
             onClick={() => setShowOfflineModal(false)}
@@ -295,8 +308,8 @@ const NutriSnapApp = () => {
       </div>
 
       {/* Misi Harian Section */}
-      <div className="flex-1 bg-white rounded-t-[40px] p-6 overflow-y-auto">
-        <div className="flex items-center justify-between mb-4">
+      <div className="flex-1 bg-white rounded-t-[40px] p-6 overflow-y-auto no-scrollbar">
+        <div className="flex items-center justify-between mb-2">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
             <Target className="w-6 h-6 text-blue-600" />
             Misi Harian
@@ -450,7 +463,7 @@ const NutriSnapApp = () => {
     }, [isScanning]);
 
     return (
-      <div className="h-full overflow-y-auto bg-white">
+      <div className="h-full overflow-y-auto bg-white no-scrollbar">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex items-center gap-3">
           <button onClick={() => setCurrentScreen('home')} className="text-white">
@@ -654,7 +667,7 @@ const NutriSnapApp = () => {
       </div>
 
       {/* Analysis Result */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 no-scrollbar">
         {/* Peringatan Defisit */}
         <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-orange-400 rounded-2xl p-4">
           <div className="flex items-start gap-3">
@@ -715,7 +728,7 @@ const NutriSnapApp = () => {
           <h1 className="text-xl font-bold">Analisis Gizi Detail</h1>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-6 no-scrollbar">
           {/* Status Gauge */}
           <div className="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-orange-300 rounded-3xl p-6 mb-6">
             <div className="text-center mb-4">
@@ -818,7 +831,7 @@ const NutriSnapApp = () => {
 
   // Rewards Screen
   const RewardsScreen = () => (
-    <div className="h-full overflow-y-auto bg-white">
+    <div className="h-full overflow-y-auto bg-white no-scrollbar">
       {/* Header with Saldo */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
         <div className="p-4 flex items-center gap-3">
@@ -899,7 +912,7 @@ const NutriSnapApp = () => {
 
   // Education Screen
   const EducationScreen = () => (
-    <div className="h-full overflow-y-auto bg-white">
+    <div className="h-full overflow-y-auto bg-white no-scrollbar">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4">
         <div className="flex items-center gap-3">
@@ -1062,7 +1075,7 @@ const NutriSnapApp = () => {
         </div>
 
         {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
+        <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50 no-scrollbar">
           {chatMessages.map((msg) => (
             <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[80%] rounded-2xl p-4 shadow-md ${msg.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-white border-2 border-gray-200'}`}>
@@ -1171,7 +1184,7 @@ const NutriSnapApp = () => {
     };
 
     return (
-      <div className="h-full overflow-y-auto bg-white">
+      <div className="h-full overflow-y-auto bg-white no-scrollbar">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6">
           <div className="flex items-center justify-between mb-4">
