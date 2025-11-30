@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Camera, Home, FileText, BookOpen, Gift, User, Wifi, WifiOff, Award, Target, AlertTriangle, MessageCircle, Play, Send, TrendingUp, Zap, Star, Medal, CheckCircle2, ShoppingBag, Pill, Heart, Baby, Calendar, Phone, MapPin } from 'lucide-react';
 import logoImage from '../assets/logo.png';
+import thumbnailVideo from '../assets/bubur.jpeg';
 
 const NutriSnapApp = () => {
   const [currentScreen, setCurrentScreen] = useState('login');
@@ -931,16 +932,24 @@ const NutriSnapApp = () => {
         {/* Video Tutorial */}
         <div>
           <h2 className="font-bold text-lg text-gray-800 mb-3">📹 Video Tutorial MPASI</h2>
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl overflow-hidden shadow-lg">
+          <div className="bg-gray-200 rounded-3xl overflow-hidden shadow-lg relative cursor-pointer group">
             <div className="relative h-48 flex items-center justify-center">
-              <Play className="w-16 h-16 text-white opacity-90" />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
-                <p className="font-bold text-sm">Cara Membuat Bubur Ikan Lele untuk Bayi 6 Bulan</p>
-                <p className="text-xs opacity-90 mt-1">Durasi: 5 menit • 234 tayangan</p>
+              <img 
+                // GANTI URL INI dengan link gambar thumbnail Anda
+                src={thumbnailVideo} 
+                alt="Thumbnail Cara Membuat Bubur Ikan Lele"
+                // PENTING: 'absolute inset-0' agar di belakang, 'object-cover' agar rapi
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <Play className="w-16 h-16 text-white opacity-90 relative z-10 group-hover:scale-110 transition-transform" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                 <p className="font-bold text-sm">Cara Membuat Bubur Ikan Lele untuk Bayi 6 Bulan</p>
+                 <p className="text-xs opacity-90 mt-1">Durasi: 5 menit • 234 tayangan</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
         {/* Forum Diskusi */}
         <div>
@@ -955,7 +964,7 @@ const NutriSnapApp = () => {
             <ForumPost 
               author="Bidan Ani"
               role="Nakes"
-              message="Coba campurkan sayur dengan makanan favorit bayi, Bu. Bisa dicoba dengan bubur atau puree buah."
+              message="Coba campurkan sayur dengan makanan favorit bayi, Bu. Bisa dicoba dengan bubur atau pure buah."
               time="1 jam lalu"
               isNakes={true}
             />
